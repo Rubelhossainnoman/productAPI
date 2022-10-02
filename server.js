@@ -11,6 +11,7 @@ const products = require('./routes/products');
 const categoryRoutes = require('./routes/categoryRoutes');
 const tagRoutes = require('./routes/tagRoutes');
 const brandRoutes = require('./routes/brandRoutes');
+const cors = require('cors');
 
 /**
  * <-----------------------Get Server Port---------------------------->
@@ -27,6 +28,7 @@ const app = express();
  */
 app.use(express.json());
 app.use(express.urlencoded({extended : false}));
+app.use(cors());
 
 /**
  * <------------------------ Static Foulder----------------------------->
