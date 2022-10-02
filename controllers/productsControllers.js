@@ -29,7 +29,7 @@ const addProducts=(req,res)=>{
     // All Products...
     const products = JSON.parse(readFileSync(path.join(__dirname,'../db/products.json')));
     if (!title || !reguler_price || !sale_price || !stoke || !short_desc || !long_desc || !category || !tag || !brand) {
-        res.status(201).json({
+        res.status(400).json({
             message : "All fields are required"
         });
     } else {
@@ -52,7 +52,8 @@ const addProducts=(req,res)=>{
         writeFileSync(path.join(__dirname,'../db/products.json'), JSON.stringify(products));
         res.status(201).json({
             message: "Product Create Successfull"
-        })
+        });
+        res.redirect('/product.html');
     }
 }
 
